@@ -11,6 +11,7 @@ export default function App() {
     'https://api.memegen.link/images/awesome/create_your_own/meme',
   );
   const [categorie, setCategorie] = useState('awesome');
+  const [dwnMessage, setDwnMessage] = useState('');
   return (
     <div className="App">
       <Form
@@ -33,7 +34,9 @@ export default function App() {
         categorie={categorie}
         setCategorie={setCategorie}
       />
-      <Download />
+      <Download url={url}
+      dwnMessage={dwnMessage}
+      setDwnMessage={setDwnMessage} />
     </div>
   );
 }
