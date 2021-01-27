@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
+import Download from './Download';
 import Form from './Form.js';
 import Meme from './Meme';
 
@@ -32,6 +33,7 @@ export default function App() {
         categorie={categorie}
         setCategorie={setCategorie}
       />
+      <Download />
     </div>
   );
 }
