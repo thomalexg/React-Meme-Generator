@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+input {
+  margin: 10px;
+}
+.Form {
+  margin-top: 0px;
+  padding: 30px 0;
+  background-color: #2e3a51;
+}
