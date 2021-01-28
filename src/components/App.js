@@ -5,6 +5,10 @@ import Form from './Form.js';
 import Meme from './Meme';
 
 export default function App() {
+  const dataCategories = localStorage.getItem('categories');
+  const dataTop = localStorage.getItem('top');
+  const dataBtm = localStorage.getItem('btm');
+
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [url, setUrl] = useState(
@@ -12,6 +16,14 @@ export default function App() {
   );
   const [categorie, setCategorie] = useState('awesome');
   const [dwnMessage, setDwnMessage] = useState('');
+  const [categorieStr, setCategorieStr] = useState(
+    dataCategories ? dataCategories : '',
+  );
+  const [topStr, setTopStr] = useState(dataTop ? dataTop : '');
+  const [btmStr, setBtmStr] = useState(dataBtm ? dataBtm : '');
+  // const [dataCategories, setDataCategories] = useState(
+  //   JSON.parse(localStorage.getItem('categories')),
+  // );
   return (
     <div className="App">
       <Form
@@ -23,7 +35,15 @@ export default function App() {
         setUrl={setUrl}
         categorie={categorie}
         setCategorie={setCategorie}
+        topStr={topStr}
+        setTopStr={setTopStr}
+        btmStr={btmStr}
+        setBtmStr={setBtmStr}
+        categorieStr={categorieStr}
+        setCategorieStr={setCategorieStr}
       />
+      {/* {dataCategories}
+      {localStorage.categories} */}
       <Meme
         url={url}
         setUrl={setUrl}
@@ -34,9 +54,11 @@ export default function App() {
         categorie={categorie}
         setCategorie={setCategorie}
       />
-      <Download url={url}
-      dwnMessage={dwnMessage}
-      setDwnMessage={setDwnMessage} />
+      <Download
+        url={url}
+        dwnMessage={dwnMessage}
+        setDwnMessage={setDwnMessage}
+      />
     </div>
   );
 }
