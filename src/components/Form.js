@@ -38,9 +38,10 @@ export default function Form(props) {
                 '/' +
                 props.bottomText,
             );
-            const newCatState = props.categorieStr + ' ' + props.categorie + ',';
+            const newCatState =
+              props.categorieStr + ' ' + props.categorie + ',';
             if (!props.categorieStr.includes(props.categorie)) {
-              props.setCategorieStr(newCAtState);
+              props.setCategorieStr(newCatState);
               localStorage.setItem('categories', newCatState);
             }
             // if (!props.categorieStr.includes(props.categorie)) {
@@ -48,11 +49,15 @@ export default function Form(props) {
             //     props.categorieStr + ' ' + props.categorie + ',',
             //   );
             // }
+            const newTopState = props.topStr + ' ' + props.topText + ',';
             if (!props.topStr.includes(props.topText)) {
-              props.setTopStr(props.topStr + ' ' + props.topText + ',');
+              props.setTopStr(newTopState);
+              localStorage.setItem('top', newTopState);
             }
+            const newBtmState = props.btmStr + ' ' + props.bottomText + ',';
             if (!props.btmStr.includes(props.bottomText)) {
-              props.setBtmStr(props.btmStr + ' ' + props.bottomText + ',');
+              props.setBtmStr(newBtmState);
+              localStorage.setItem('btm', newBtmState);
             }
             document.querySelector('.CategorieBtn').value = '';
             document.querySelector('.TopBtn').value = '';
