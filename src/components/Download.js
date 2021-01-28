@@ -30,7 +30,7 @@ export default function Download(props) {
         const url = window.URL.createObjectURL(new Blob([buffer]));
         const link = document.createElement('a');
         link.href = url;
-        link.setAttribute('download', 'image.png'); //or any other extension
+        link.setAttribute('download', 'image.png');
         document.body.appendChild(link);
         link.click();
       });

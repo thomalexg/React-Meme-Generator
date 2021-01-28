@@ -11,7 +11,7 @@ export default function Form(props) {
           onChange={(e) =>
             props.setCategorie(e.target.value.split(' ').join('_'))
           }
-        ></input>
+        />
         <input
           className="TopBtn"
           type="text"
@@ -19,7 +19,7 @@ export default function Form(props) {
           onChange={(e) =>
             props.setTopText(e.target.value.split(' ').join('_'))
           }
-        ></input>
+        />
         <input
           className="BottomBtn"
           type="text"
@@ -27,7 +27,7 @@ export default function Form(props) {
           onChange={(e) =>
             props.setBottomText(e.target.value.split(' ').join('_'))
           }
-        ></input>
+        />
         <button
           onClick={() => {
             props.setUrl(
