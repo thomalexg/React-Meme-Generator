@@ -39,7 +39,7 @@ export default function Download(props) {
     }
   };
   return (
-    <div>
+    <div className="download">
       <button onClick={() => download()}>Download meme!</button>
       {props.dwnMessage}
     </div>

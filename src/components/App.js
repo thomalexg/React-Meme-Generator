@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import Download from './Download';
+import Footer from './Footer';
 import Form from './Form.js';
 import Meme from './Meme';
 
@@ -57,6 +58,7 @@ export default function App() {
         dwnMessage={dwnMessage}
         setDwnMessage={setDwnMessage}
       />
+      <Footer />
     </div>
   );
 }
