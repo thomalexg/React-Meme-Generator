@@ -47,3 +47,7 @@ input {
 .Meme {
   margin: 30px auto;
 }
+.img {
+  max-width: 100%;
+  height: auto;
+}
