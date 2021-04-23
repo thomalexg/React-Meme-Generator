@@ -1,17 +1,37 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 export default function Form(props) {
+  const [templates, setTemplates] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('https://api.memegen.link/templates/')
+      .then((res) => {
+        setTemplates(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className="Form">
       <div>
-        <input
-          className="CategorieBtn"
-          type="text"
-          placeholder="categorie"
-          onChange={(e) =>
-            props.setCategorie(e.target.value.split(' ').join('_'))
-          }
-        />
+        <select
+          id="selectImg"
+          onChange={(e) => {
+            const category = e.target.value;
+            props.setCategorie(e.target.value);
+            props.setUrl('https://api.memegen.link/images/' + category + '/');
+          }}
+        >
+          {templates.map((meme) => (
+            <option key={meme.id} value={meme.id} name={meme.name}>
+              {meme.name}
+            </option>
+          ))}
+        </select>
         <input
           className="TopBtn"
           type="text"
@@ -30,6 +50,7 @@ export default function Form(props) {
         />
         <button
           onClick={() => {
+            console.log('categorie', props.categorie);
             props.setUrl(
               'https://api.memegen.link/images/' +
                 props.categorie +
@@ -44,11 +65,6 @@ export default function Form(props) {
               props.setCategorieStr(newCatState);
               localStorage.setItem('categories', newCatState);
             }
-            // if (!props.categorieStr.includes(props.categorie)) {
-            //   props.setCategorieStr(
-            //     props.categorieStr + ' ' + props.categorie + ',',
-            //   );
-            // }
             const newTopState = props.topStr + ' ' + props.topText + ',';
             if (!props.topStr.includes(props.topText)) {
               props.setTopStr(newTopState);
@@ -59,7 +75,6 @@ export default function Form(props) {
               props.setBtmStr(newBtmState);
               localStorage.setItem('btm', newBtmState);
             }
-            document.querySelector('.CategorieBtn').value = '';
             document.querySelector('.TopBtn').value = '';
             document.querySelector('.BottomBtn').value = '';
           }}
@@ -72,7 +87,6 @@ export default function Form(props) {
         <p>Top Text you entered: {props.topStr}</p>
         <p>Bottom Text you entered: {props.btmStr}</p>
       </div>
-      {/* {props.url} */}
     </div>
   );
 }

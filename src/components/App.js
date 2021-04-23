@@ -42,8 +42,6 @@ export default function App() {
         categorieStr={categorieStr}
         setCategorieStr={setCategorieStr}
       />
-      {/* {dataCategories}
-      {localStorage.categories} */}
       <Meme
         url={url}
         setUrl={setUrl}
